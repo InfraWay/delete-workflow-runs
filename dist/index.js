@@ -54,7 +54,7 @@ async function run() {
         .paginate("GET /repos/:owner/:repo/actions/workflows/:workflow_id/runs", {
           owner: repo_owner,
           repo: repo_name,
-          workflow_id: workflow.id
+          workflow_id: workflow.id,
           ... status ? { status } : undefined,
         });
       for (const run of runs) {
