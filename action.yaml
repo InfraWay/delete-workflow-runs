@@ -43,6 +43,9 @@ inputs:
     description: 'Only log actions, do not perform any delete operations'
     required: false
 
+  status:
+    description: 'Status of run to for filtering'
+    required: false
 
 runs:
   using: 'node16'
