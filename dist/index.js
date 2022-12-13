@@ -5,6 +5,7 @@ async function run() {
     const token = core.getInput('token');
     const url = core.getInput('baseUrl');
     const repository = core.getInput('repository');
+    const status = core.getInput('status');
     const retain_days = Number(core.getInput('retain_days'));
     const keep_minimum_runs = Number(core.getInput('keep_minimum_runs'));
     const delete_workflow_pattern = core.getInput('delete_workflow_pattern');
@@ -54,6 +55,7 @@ async function run() {
           owner: repo_owner,
           repo: repo_name,
           workflow_id: workflow.id
+          ... status ? { status } : undefined,
         });
       for (const run of runs) {
         core.debug(`Run: '${workflow.name}' workflow run ${run.id} (status=${run.status})`)
